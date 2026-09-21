@@ -517,9 +517,9 @@ export default function App() {
               </span>
             </div>
             <div className={`text-[11px] font-sans flex items-center gap-1.5 font-medium ${isLightTheme ? 'text-black font-semibold' : 'text-zinc-400'}`}>
-              <span className={isLightTheme ? 'text-black font-semibold' : ''}>Homology Suite</span>
+              
               <span className={isLightTheme ? 'text-black font-bold' : 'text-zinc-600'}>•</span>
-              <span className={isLightTheme ? 'text-black font-bold' : 'text-zinc-200 font-semibold'}>Dhurgham Alsaadi</span>
+             
             </div>
           </div>
         </div>
