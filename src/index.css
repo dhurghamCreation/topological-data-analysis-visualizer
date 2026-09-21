@@ -1,0 +1,1068 @@
+@import "@radix-ui/themes/styles.css";
+@import "tailwindcss";
+
+:root {
+  /* Premium Typography Families */
+  --font-display: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  --font-heading: 'Space Grotesk', 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --radix-font-sans: var(--font-sans);
+
+  /* Radix UI Themes Default Tokens (Slate & Indigo) */
+  --realtime-text: #f8fafc;
+  --realtime-background: #111318;
+  --realtime-primary: #3e63dd;
+  --realtime-secondary: #202438;
+  --realtime-accent: #9bb1ff;
+  --realtime-card: #181b22;
+  --realtime-elevated: #222631;
+  --realtime-border: rgba(255, 255, 255, 0.12);
+  --realtime-primary-hover: #3657c9;
+  --realtime-secondary-hover: #292e47;
+  --realtime-accent-glow: rgba(62, 99, 221, 0.4);
+
+  /* Radix Themes Mapped Variables */
+  --color-background: var(--realtime-background);
+  --color-surface: var(--realtime-card);
+  --color-panel-translucent: rgba(24, 27, 34, 0.85);
+  --color-panel-solid: var(--realtime-card);
+  --radix-border: var(--realtime-border);
+  --radix-primary: var(--realtime-primary);
+  --radix-accent: var(--realtime-accent);
+  --radix-accent-soft: var(--realtime-secondary);
+}
+
+html, body, #root {
+  background-color: var(--realtime-background) !important;
+  color: var(--realtime-text) !important;
+  font-family: var(--radix-font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ========================================================
+   Radix UI Themes: Complete Surface & Canvas Styling
+   ======================================================== */
+
+/* App background & deep canvas */
+.min-h-screen,
+.bg-zinc-950,
+.bg-slate-950,
+.bg-\[\#09090b\],
+.bg-\[\#030712\],
+.bg-\[\#0b1329\],
+.bg-black {
+  background-color: var(--realtime-background) !important;
+}
+
+/* Cards, containers, drawers, headers, modals (Radix translucent surface with subtle blur) */
+.bg-zinc-900,
+.bg-slate-900,
+.bg-\[\#121215\],
+.bg-zinc-900\/80,
+.bg-zinc-900\/90,
+.bg-slate-900\/90,
+.bg-zinc-950\/90,
+.bg-\[\#0b1329\]\/95 {
+  background-color: var(--color-panel-translucent) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+
+/* Elevated hover surfaces and active badges */
+.bg-zinc-800,
+.bg-slate-800,
+.bg-zinc-800\/60,
+.bg-slate-800\/60 {
+  background-color: var(--realtime-elevated) !important;
+}
+
+/* Precision Radix hairline borders */
+.border-zinc-800,
+.border-slate-800,
+.border-\[\#27272a\],
+.border-zinc-700,
+.border-slate-700,
+.border-sky-900\/60 {
+  border-color: var(--radix-border) !important;
+}
+
+/* ========================================================
+   Radix UI Themes: Logo Badge
+   ======================================================== */
+#app-logo,
+.app-logo-badge {
+  background: linear-gradient(135deg, var(--radix-primary), var(--radix-accent-soft)) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 2px 10px var(--realtime-accent-glow) !important;
+  border-radius: 8px !important;
+  font-weight: 700 !important;
+}
+
+/* ========================================================
+   Radix UI Themes: Segmented Controls & Tabs
+   ======================================================== */
+.tda-tab-active,
+button[id^="tab-btn-"][class*="bg-zinc-800"],
+button[id^="tab-btn-"][class*="text-cyan-300"] {
+  background-color: var(--realtime-elevated) !important;
+  color: var(--realtime-text, #ffffff) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35) !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+}
+
+.tda-tab-active svg,
+.tda-tab-active span,
+button[id^="tab-btn-"][class*="bg-zinc-800"] svg,
+button[id^="tab-btn-"][class*="bg-zinc-800"] span,
+button[id^="tab-btn-"][class*="text-cyan-300"] svg,
+button[id^="tab-btn-"][class*="text-cyan-300"] span {
+  color: var(--realtime-text, #ffffff) !important;
+}
+
+/* Specific Light Theme Tab Overrides with Maximum Specificity */
+[data-appearance="light"] .tda-tab-active,
+[data-appearance="light"] button[id^="tab-btn-"][class*="tda-tab-active"],
+.theme-light .tda-tab-active,
+.theme-light button[id^="tab-btn-"][class*="tda-tab-active"],
+.theme-light button[id^="tab-btn-"][class*="bg-sky-100"] {
+  background-color: #e0f2fe !important;
+  border: 1.5px solid #0284c7 !important;
+  color: #0c4a6e !important;
+  font-weight: 800 !important;
+}
+
+[data-appearance="light"] .tda-tab-active span,
+[data-appearance="light"] .tda-tab-active svg,
+[data-appearance="light"] button[id^="tab-btn-"] span,
+.theme-light .tda-tab-active span,
+.theme-light .tda-tab-active svg,
+.theme-light button[id^="tab-btn-"] span,
+.theme-light button[id^="tab-btn-"] svg {
+  color: #0c4a6e !important;
+}
+
+.tda-tab-inactive,
+button[id^="tab-btn-"]:not([class*="bg-zinc-800"]):not([class*="text-cyan-300"]) {
+  background-color: transparent !important;
+  color: #94a3b8 !important;
+  border: 1px solid transparent !important;
+  border-radius: 6px !important;
+}
+
+.tda-tab-inactive:hover,
+button[id^="tab-btn-"]:not([class*="bg-zinc-800"]):not([class*="text-cyan-300"]):hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: #f1f5f9 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.tda-tab-inactive svg,
+button[id^="tab-btn-"]:not([class*="bg-zinc-800"]):not([class*="text-cyan-300"]) svg {
+  color: #94a3b8 !important;
+}
+
+/* ========================================================
+   Radix UI Themes: Buttons (Solid, Soft, Surface)
+   ======================================================== */
+
+/* Primary Action Buttons (Solid variant: Play/Pause, Re-sample) */
+#btn-toggle-play,
+#btn-regenerate-data,
+.btn-realtime-primary {
+  background-color: var(--radix-primary) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+  transition: all 0.15s ease !important;
+}
+
+#btn-toggle-play svg,
+#btn-toggle-play span,
+#btn-regenerate-data svg,
+#btn-regenerate-data span,
+.btn-realtime-primary svg,
+.btn-realtime-primary span {
+  color: #ffffff !important;
+}
+
+#btn-toggle-play:hover,
+#btn-regenerate-data:hover,
+.btn-realtime-primary:hover {
+  filter: brightness(1.1) !important;
+  box-shadow: 0 2px 10px var(--realtime-accent-glow) !important;
+  transform: translateY(-1px);
+}
+
+/* Secondary & Tool Header Buttons (Soft variant) */
+#btn-cycle-realtime-colors,
+#btn-open-settings,
+#btn-open-inspector-top,
+#btn-open-tutorial-top,
+#btn-open-presentation-top {
+  background-color: var(--radix-accent-soft) !important;
+  color: var(--radix-accent) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  transition: all 0.15s ease !important;
+}
+
+#btn-cycle-realtime-colors svg,
+#btn-cycle-realtime-colors span,
+#btn-open-settings svg,
+#btn-open-settings span,
+#btn-open-inspector-top svg,
+#btn-open-inspector-top span,
+#btn-open-tutorial-top svg,
+#btn-open-tutorial-top span,
+#btn-open-presentation-top svg,
+#btn-open-presentation-top span {
+  color: var(--radix-accent) !important;
+}
+
+#btn-cycle-realtime-colors:hover,
+#btn-open-settings:hover,
+#btn-open-inspector-top:hover,
+#btn-open-tutorial-top:hover,
+#btn-open-presentation-top:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+#btn-cycle-realtime-colors:hover svg,
+#btn-open-settings:hover svg,
+#btn-open-inspector-top:hover svg,
+#btn-open-tutorial-top:hover svg,
+#btn-open-presentation-top:hover svg {
+  color: #ffffff !important;
+}
+
+/* Step / Navigation buttons in controller (Surface variant) */
+#btn-step-back,
+#btn-step-forward,
+#btn-reset-filt {
+  background-color: var(--realtime-elevated) !important;
+  color: #cbd5e1 !important;
+  border: 1px solid var(--radix-border) !important;
+  border-radius: 8px !important;
+  transition: all 0.15s ease !important;
+}
+
+#btn-step-back:hover,
+#btn-step-forward:hover,
+#btn-reset-filt:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+#btn-step-back:hover svg,
+#btn-step-forward:hover svg,
+#btn-reset-filt:hover svg {
+  color: #ffffff !important;
+}
+
+/* Speed selector */
+button[id^="speed-btn-"][class*="bg-cyan-500"] {
+  background-color: var(--radix-primary) !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  border-radius: 6px !important;
+}
+
+button[id^="speed-btn-"]:not([class*="bg-cyan-500"]) {
+  color: #94a3b8 !important;
+}
+
+/* ========================================================
+   Radix UI Themes: Cards & Manifold Presets
+   ======================================================== */
+/* ========================================================
+   Radix UI Themes: Dataset Presets & Filtration Models
+   ======================================================== */
+button[id^="preset-btn-"],
+button[id^="model-btn-"] {
+  border-radius: 10px !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Selected Preset / Model Card in Dark/Default Mode */
+button[id^="preset-btn-"].tda-preset-selected,
+button[id^="model-btn-"].tda-preset-selected {
+  background-color: var(--radix-accent-soft, rgba(6, 182, 212, 0.2)) !important;
+  border: 1.5px solid var(--radix-primary, #06b6d4) !important;
+  box-shadow: 0 0 0 1px var(--radix-primary, #06b6d4), 0 4px 14px var(--realtime-accent-glow, rgba(6, 182, 212, 0.25)) !important;
+}
+
+button[id^="preset-btn-"].tda-preset-selected .tda-card-title,
+button[id^="model-btn-"].tda-preset-selected .tda-card-title {
+  color: #ffffff !important;
+}
+
+button[id^="preset-btn-"].tda-preset-selected .tda-card-desc,
+button[id^="model-btn-"].tda-preset-selected .tda-card-desc {
+  color: #e0f2fe !important;
+}
+
+button[id^="preset-btn-"].tda-preset-selected .tda-card-formula,
+button[id^="model-btn-"].tda-preset-selected .tda-card-formula {
+  color: #67e8f9 !important;
+}
+
+/* Unselected Preset / Model Card in Dark/Default Mode */
+button[id^="preset-btn-"].tda-preset-unselected,
+button[id^="model-btn-"].tda-preset-unselected {
+  background-color: rgba(24, 24, 27, 0.6) !important;
+  border: 1px solid rgba(63, 63, 70, 0.6) !important;
+}
+
+button[id^="preset-btn-"].tda-preset-unselected .tda-card-title,
+button[id^="model-btn-"].tda-preset-unselected .tda-card-title {
+  color: #f4f4f5 !important;
+}
+
+button[id^="preset-btn-"].tda-preset-unselected .tda-card-desc,
+button[id^="model-btn-"].tda-preset-unselected .tda-card-desc {
+  color: #a1a1aa !important;
+}
+
+button[id^="preset-btn-"].tda-preset-unselected .tda-card-formula,
+button[id^="model-btn-"].tda-preset-unselected .tda-card-formula {
+  color: #38bdf8 !important;
+}
+
+button[id^="preset-btn-"].tda-preset-unselected:hover,
+button[id^="model-btn-"].tda-preset-unselected:hover {
+  background-color: rgba(39, 39, 42, 0.8) !important;
+  border-color: rgba(113, 113, 122, 0.8) !important;
+  transform: translateY(-1px);
+}
+
+/* ========================================================
+   Radix UI Themes: 3D Mesh Layer Toggles
+   ======================================================== */
+button[id^="toggle-3d-"][class*="bg-sky-500"] {
+  background-color: var(--radix-primary) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px var(--realtime-accent-glow) !important;
+}
+
+button[id^="toggle-3d-"][class*="bg-sky-500"] svg,
+button[id^="toggle-3d-"][class*="bg-sky-500"] span {
+  color: #ffffff !important;
+}
+
+button[id^="toggle-3d-"]:not([class*="bg-sky-500"]) {
+  background-color: var(--color-panel-translucent) !important;
+  color: #94a3b8 !important;
+  border: 1px solid var(--radix-border) !important;
+  border-radius: 8px !important;
+}
+
+button[id^="toggle-3d-"]:not([class*="bg-sky-500"]):hover {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  color: #ffffff !important;
+}
+
+/* ========================================================
+   Radix UI Themes: File Upload, Sliders, Badges & Inputs
+   ======================================================== */
+#file-upload-dropzone {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+  border: 1.5px dashed rgba(255, 255, 255, 0.16) !important;
+  border-radius: 10px !important;
+  transition: all 0.2s ease !important;
+}
+
+#file-upload-dropzone:hover {
+  background-color: var(--radix-accent-soft) !important;
+  border-color: var(--radix-primary) !important;
+}
+
+#file-upload-dropzone svg {
+  color: var(--radix-accent) !important;
+}
+
+input[type="range"] {
+  accent-color: var(--radix-primary) !important;
+}
+
+select, option {
+  background-color: var(--realtime-card) !important;
+  color: var(--realtime-text) !important;
+  border: 1px solid var(--radix-border) !important;
+  border-radius: 8px !important;
+}
+
+/* ========================================================
+   Radix UI Themes: Universal Accent & Theme Color Propagation
+   Ensures ALL buttons, tabs, badges, and modals switch cleanly
+   to the chosen color (Green, Violet, Cobalt, Amber, etc.)
+   ======================================================== */
+
+/* Minigame, Theory, and Comparison Navigation Controls */
+#btn-open-minigame {
+  background-color: var(--realtime-secondary) !important;
+  color: var(--realtime-accent) !important;
+  border-color: var(--realtime-accent) !important;
+  box-shadow: 0 1px 6px var(--realtime-accent-glow) !important;
+  transition: all 0.2s ease !important;
+}
+
+#btn-open-minigame:hover {
+  background-color: var(--realtime-primary) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+#btn-open-theory,
+#btn-open-comparison {
+  background-color: var(--realtime-elevated) !important;
+  border-color: var(--radix-border) !important;
+  color: var(--realtime-text) !important;
+  transition: all 0.2s ease !important;
+}
+
+#btn-open-theory:hover,
+#btn-open-comparison:hover {
+  border-color: var(--realtime-accent) !important;
+  color: var(--realtime-accent) !important;
+  transform: translateY(-1px);
+}
+
+/* Global Cyan/Indigo/Sky Tailwind utilities dynamically re-colored */
+.text-cyan-400,
+.text-cyan-300,
+.text-sky-400,
+.text-sky-300,
+.text-indigo-400,
+.text-indigo-300 {
+  color: var(--realtime-accent) !important;
+}
+
+.bg-cyan-500,
+.bg-sky-500,
+.bg-indigo-600 {
+  background-color: var(--realtime-primary) !important;
+}
+
+.bg-cyan-950,
+.bg-cyan-950\/40,
+.bg-cyan-950\/50,
+.bg-cyan-950\/60,
+.bg-cyan-950\/80,
+.bg-indigo-950,
+.bg-indigo-950\/40,
+.bg-indigo-950\/50,
+.bg-indigo-950\/60 {
+  background-color: var(--realtime-secondary) !important;
+}
+
+.border-cyan-500,
+.border-cyan-500\/30,
+.border-cyan-500\/40,
+.border-cyan-500\/50,
+.border-cyan-800,
+.border-cyan-800\/60,
+.border-indigo-800,
+.border-indigo-500 {
+  border-color: var(--realtime-accent) !important;
+}
+
+/* Modal dialog surfaces & headers */
+[role="dialog"],
+.tda-modal-surface {
+  background-color: var(--color-panel-translucent) !important;
+  border-color: var(--radix-border) !important;
+  color: var(--realtime-text) !important;
+}
+
+/* ========================================================
+   Light Theme Text Contrast Overhaul:
+   Converts all grey/muted text in the white theme into crisp, bold
+   BLACK so all labels, descriptions, parameters, and axes stand out sharply!
+   ======================================================== */
+[data-appearance="light"] html,
+[data-appearance="light"] body,
+[data-appearance="light"] #root,
+.theme-light,
+.theme-light html,
+.theme-light body,
+.theme-light #root {
+  color: #000000 !important;
+  --realtime-text: #000000 !important;
+}
+
+/* Transform all grey text classes into crisp high-contrast black in light theme */
+[data-appearance="light"] .text-zinc-400,
+[data-appearance="light"] .text-zinc-500,
+[data-appearance="light"] .text-zinc-600,
+[data-appearance="light"] .text-zinc-700,
+[data-appearance="light"] .text-slate-400,
+[data-appearance="light"] .text-slate-500,
+[data-appearance="light"] .text-slate-600,
+[data-appearance="light"] .text-slate-700,
+[data-appearance="light"] .text-gray-400,
+[data-appearance="light"] .text-gray-500,
+[data-appearance="light"] .text-gray-600,
+[data-appearance="light"] .text-neutral-400,
+[data-appearance="light"] .text-neutral-500,
+[data-appearance="light"] .text-neutral-600,
+[data-appearance="light"] .text-zinc-300,
+[data-appearance="light"] .text-slate-300,
+.theme-light .text-zinc-400,
+.theme-light .text-zinc-500,
+.theme-light .text-zinc-600,
+.theme-light .text-zinc-700,
+.theme-light .text-slate-400,
+.theme-light .text-slate-500,
+.theme-light .text-slate-600,
+.theme-light .text-slate-700,
+.theme-light .text-gray-400,
+.theme-light .text-gray-500,
+.theme-light .text-gray-600,
+.theme-light .text-neutral-400,
+.theme-light .text-neutral-500,
+.theme-light .text-neutral-600,
+.theme-light .text-zinc-300,
+.theme-light .text-slate-300 {
+  color: #000000 !important;
+  font-weight: 550 !important;
+}
+
+/* Ensure light theme white text becomes crisp black */
+[data-appearance="light"] .text-zinc-100,
+[data-appearance="light"] .text-zinc-200,
+[data-appearance="light"] .text-slate-100,
+[data-appearance="light"] .text-slate-200,
+[data-appearance="light"] .text-white,
+.theme-light .text-zinc-100,
+.theme-light .text-zinc-200,
+.theme-light .text-slate-100,
+.theme-light .text-slate-200,
+.theme-light .text-white {
+  color: #000000 !important;
+}
+
+/* Inactive tabs, card descriptions, labels and badges in light theme stand out in black */
+[data-appearance="light"] .tda-tab-inactive,
+[data-appearance="light"] button[id^="tab-btn-"]:not([class*="tda-tab-active"]):not([class*="bg-sky-100"]):not([class*="bg-zinc-800"]),
+.theme-light .tda-tab-inactive,
+.theme-light button[id^="tab-btn-"]:not([class*="tda-tab-active"]):not([class*="bg-sky-100"]):not([class*="bg-zinc-800"]) {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+[data-appearance="light"] .tda-tab-inactive svg,
+[data-appearance="light"] button[id^="tab-btn-"]:not([class*="tda-tab-active"]):not([class*="bg-sky-100"]):not([class*="bg-zinc-800"]) svg,
+.theme-light .tda-tab-inactive svg,
+.theme-light button[id^="tab-btn-"]:not([class*="tda-tab-active"]):not([class*="bg-sky-100"]):not([class*="bg-zinc-800"]) svg {
+  color: #000000 !important;
+}
+
+[data-appearance="light"] .tda-card-desc,
+[data-appearance="light"] .tda-section-label,
+.theme-light .tda-card-desc,
+.theme-light .tda-section-label {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+[data-appearance="light"] button[id^="preset-btn-"].tda-preset-unselected .tda-card-desc,
+[data-appearance="light"] button[id^="model-btn-"].tda-preset-unselected .tda-card-desc,
+.theme-light button[id^="preset-btn-"].tda-preset-unselected .tda-card-desc,
+.theme-light button[id^="model-btn-"].tda-preset-unselected .tda-card-desc {
+  color: #000000 !important;
+  font-weight: 500 !important;
+}
+
+[data-appearance="light"] button[id^="toggle-3d-"]:not([class*="bg-sky-500"]):not([class*="bg-blue-600"]),
+.theme-light button[id^="toggle-3d-"]:not([class*="bg-sky-500"]):not([class*="bg-blue-600"]) {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+/* Light theme SVG chart axes & text (Persistence Diagram, Barcode, Betti curves, Landscapes) */
+[data-appearance="light"] svg text,
+.theme-light svg text,
+[data-appearance="light"] .recharts-text,
+.theme-light .recharts-text {
+  fill: #000000 !important;
+  font-weight: 550 !important;
+}
+
+[data-appearance="light"] .axis text,
+.theme-light .axis text,
+[data-appearance="light"] .tick text,
+.theme-light .tick text {
+  fill: #000000 !important;
+  font-weight: 600 !important;
+}
+
+/* ========================================================
+   Unique Non-Blue Share Styling Per Theme
+   - Light (White): Vivid Crimson Rose (#be123c / text-rose-800)
+   - Obsidian (Dark): Brilliant Mint Emerald (#10b981 / text-emerald-300)
+   - Blueprint (CAD): Radiant Golden Amber (#f59e0b / text-amber-300)
+   ======================================================== */
+.share-btn-light {
+  background-color: #fff1f2 !important;
+  border: 1.5px solid #fda4af !important;
+  color: #9f1239 !important;
+  box-shadow: 0 1px 3px rgba(225, 29, 72, 0.15) !important;
+}
+.share-btn-light:hover {
+  background-color: #ffe4e6 !important;
+  border-color: #fb7185 !important;
+}
+.share-btn-light span,
+.share-text-light {
+  color: #9f1239 !important;
+  font-weight: 800 !important;
+}
+.share-btn-light svg {
+  color: #e11d48 !important;
+}
+
+.share-btn-obsidian {
+  background-color: rgba(6, 78, 59, 0.5) !important;
+  border: 1.5px solid rgba(16, 185, 129, 0.6) !important;
+  color: #6ee7b7 !important;
+  box-shadow: 0 1px 6px rgba(16, 185, 129, 0.25) !important;
+}
+.share-btn-obsidian:hover {
+  background-color: rgba(6, 78, 59, 0.8) !important;
+  border-color: rgba(52, 211, 153, 0.8) !important;
+}
+.share-btn-obsidian span,
+.share-text-obsidian {
+  color: #6ee7b7 !important;
+  font-weight: 800 !important;
+}
+.share-btn-obsidian svg {
+  color: #34d399 !important;
+}
+
+.share-btn-blueprint {
+  background-color: rgba(120, 53, 15, 0.5) !important;
+  border: 1.5px solid rgba(245, 158, 11, 0.6) !important;
+  color: #fcd34d !important;
+  box-shadow: 0 1px 6px rgba(245, 158, 11, 0.25) !important;
+}
+.share-btn-blueprint:hover {
+  background-color: rgba(120, 53, 15, 0.8) !important;
+  border-color: rgba(251, 191, 36, 0.8) !important;
+}
+.share-btn-blueprint span,
+.share-text-blueprint {
+  color: #fcd34d !important;
+  font-weight: 800 !important;
+}
+.share-btn-blueprint svg {
+  color: #fbbf24 !important;
+}
+
+/* ========================================================
+   Distinct Typography Classes & Font Utility Mappings
+   ======================================================== */
+.font-display {
+  font-family: var(--font-display) !important;
+}
+
+.font-heading {
+  font-family: var(--font-heading) !important;
+}
+
+.font-mono {
+  font-family: var(--font-mono) !important;
+}
+
+.font-sans {
+  font-family: var(--font-sans) !important;
+}
+
+/* ========================================================
+   Brilliant Animations & Pulse Interactions
+   ======================================================== */
+@keyframes vr-pulse-emerald {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes vr-pulse-rose {
+  0% {
+    box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(244, 63, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(244, 63, 94, 0);
+  }
+}
+
+@keyframes subtle-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-vr-ready {
+  animation: vr-pulse-emerald 2.2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+.animate-vr-playing {
+  animation: vr-pulse-rose 1.6s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+.shimmer-badge {
+  background: linear-gradient(90deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.03) 100%);
+  background-size: 200% 100%;
+  animation: subtle-shimmer 3s infinite linear;
+}
+
+/* ========================================================
+   Universal Red Hover on Close "X" Buttons
+   ======================================================== */
+button[id*="close" i],
+button[id*="btn-close" i],
+button[aria-label*="close" i],
+button[title*="close" i],
+.btn-close,
+button:has(svg.lucide-x) {
+  transition: all 0.15s ease-in-out !important;
+}
+
+button[id*="close" i]:hover,
+button[id*="btn-close" i]:hover,
+button[aria-label*="close" i]:hover,
+button[title*="close" i]:hover,
+.btn-close:hover,
+button:has(svg.lucide-x):hover {
+  background-color: rgba(239, 68, 68, 0.22) !important;
+  color: #ef4444 !important;
+  border-color: rgba(239, 68, 68, 0.45) !important;
+}
+
+button:has(svg.lucide-x):hover svg.lucide-x,
+button:has(svg.lucide-x):hover svg {
+  color: #ef4444 !important;
+  stroke: #ef4444 !important;
+}
+
+/* ========================================================
+   High Contrast Fix for Blue & Blueprint Themes
+   ======================================================== */
+[data-accent-color="blue"],
+[data-accent-color="sky"],
+[data-accent-color="cyan"],
+.theme-blueprint {
+  --realtime-text: #f8fafc;
+}
+
+[data-accent-color="blue"] .text-zinc-400,
+[data-accent-color="sky"] .text-zinc-400,
+[data-accent-color="cyan"] .text-zinc-400,
+.theme-blueprint .text-zinc-400 {
+  color: #93c5fd !important;
+}
+
+[data-accent-color="blue"] .text-zinc-500,
+[data-accent-color="sky"] .text-zinc-500,
+[data-accent-color="cyan"] .text-zinc-500,
+.theme-blueprint .text-zinc-500 {
+  color: #bfdbfe !important;
+}
+
+[data-accent-color="blue"] .text-zinc-300,
+[data-accent-color="sky"] .text-zinc-300,
+[data-accent-color="cyan"] .text-zinc-300,
+.theme-blueprint .text-zinc-300 {
+  color: #e2e8f0 !important;
+}
+
+/* ========================================================
+   Light / White Theme High Contrast & Shape Definition
+   ======================================================== */
+[data-appearance="light"],
+.theme-light {
+  color-scheme: light;
+  --realtime-text: #090d16;
+  --realtime-background: #f8fafc;
+  --realtime-card: #ffffff;
+  --realtime-elevated: #f1f5f9;
+  --realtime-border: #cbd5e1;
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-panel-translucent: rgba(255, 255, 255, 0.94);
+  --color-panel-solid: #ffffff;
+  --radix-border: #cbd5e1;
+}
+
+[data-appearance="light"] .text-zinc-100,
+[data-appearance="light"] .text-white,
+.theme-light .text-zinc-100,
+.theme-light .text-white {
+  color: #0f172a !important;
+}
+
+[data-appearance="light"] .text-zinc-200,
+.theme-light .text-zinc-200 {
+  color: #1e293b !important;
+}
+
+[data-appearance="light"] .text-zinc-300,
+.theme-light .text-zinc-300 {
+  color: #334155 !important;
+}
+
+[data-appearance="light"] .text-zinc-400,
+.theme-light .text-zinc-400 {
+  color: #475569 !important;
+}
+
+[data-appearance="light"] .text-zinc-500,
+.theme-light .text-zinc-500 {
+  color: #64748b !important;
+}
+
+[data-appearance="light"] .bg-zinc-950,
+[data-appearance="light"] .bg-zinc-900,
+[data-appearance="light"] .bg-\[\#09090b\],
+.theme-light .bg-zinc-950,
+.theme-light .bg-zinc-900,
+.theme-light .bg-\[\#09090b\] {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
+[data-appearance="light"] .bg-zinc-800,
+.theme-light .bg-zinc-800 {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+/* ========================================================
+   Light Theme Preset Cards & Filtration Models High Contrast
+   ======================================================== */
+[data-appearance="light"] .tda-section-label,
+.theme-light .tda-section-label {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+[data-appearance="light"] .tda-section-label svg,
+.theme-light .tda-section-label svg {
+  color: #0284c7 !important;
+}
+
+/* Unselected Presets & Models in Light Theme */
+[data-appearance="light"] button[id^="preset-btn-"].tda-preset-unselected,
+[data-appearance="light"] button[id^="model-btn-"].tda-preset-unselected,
+.theme-light button[id^="preset-btn-"].tda-preset-unselected,
+.theme-light button[id^="model-btn-"].tda-preset-unselected {
+  background-color: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+}
+
+[data-appearance="light"] button[id^="preset-btn-"].tda-preset-unselected .tda-card-title,
+[data-appearance="light"] button[id^="model-btn-"].tda-preset-unselected .tda-card-title,
+.theme-light button[id^="preset-btn-"].tda-preset-unselected .tda-card-title,
+.theme-light button[id^="model-btn-"].tda-preset-unselected .tda-card-title {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+[data-appearance="light"] button[id^="preset-btn-"].tda-preset-unselected .tda-card-desc,
+[data-appearance="light"] button[id^="model-btn-"].tda-preset-unselected .tda-card-desc,
+.theme-light button[id^="preset-btn-"].tda-preset-unselected .tda-card-desc,
+.theme-light button[id^="model-btn-"].tda-preset-unselected .tda-card-desc {
+  color: #334155 !important;
+  font-weight: 500 !important;
+}
+
+[data-appearance="light"] button[id^="preset-btn-"].tda-preset-unselected .tda-card-formula,
+[data-appearance="light"] button[id^="model-btn-"].tda-preset-unselected .tda-card-formula,
+.theme-light button[id^="preset-btn-"].tda-preset-unselected .tda-card-formula,
+.theme-light button[id^="model-btn-"].tda-preset-unselected .tda-card-formula {
+  color: #0369a1 !important;
+  font-weight: 600 !important;
+}
+
+[data-appearance="light"] button[id^="preset-btn-"].tda-preset-unselected:hover,
+[data-appearance="light"] button[id^="model-btn-"].tda-preset-unselected:hover,
+.theme-light button[id^="preset-btn-"].tda-preset-unselected:hover,
+.theme-light button[id^="model-btn-"].tda-preset-unselected:hover {
+  background-color: #f8fafc !important;
+  border-color: #94a3b8 !important;
+}
+
+/* Selected Presets & Models in Light Theme */
+[data-appearance="light"] button[id^="preset-btn-"].tda-preset-selected,
+[data-appearance="light"] button[id^="model-btn-"].tda-preset-selected,
+.theme-light button[id^="preset-btn-"].tda-preset-selected,
+.theme-light button[id^="model-btn-"].tda-preset-selected {
+  background-color: #e0f2fe !important;
+  border: 2px solid #0284c7 !important;
+  box-shadow: 0 0 0 1px #0284c7, 0 4px 12px rgba(2, 132, 199, 0.18) !important;
+}
+
+[data-appearance="light"] button[id^="preset-btn-"].tda-preset-selected .tda-card-title,
+[data-appearance="light"] button[id^="model-btn-"].tda-preset-selected .tda-card-title,
+.theme-light button[id^="preset-btn-"].tda-preset-selected .tda-card-title,
+.theme-light button[id^="model-btn-"].tda-preset-selected .tda-card-title {
+  color: #0c4a6e !important;
+  font-weight: 800 !important;
+}
+
+[data-appearance="light"] button[id^="preset-btn-"].tda-preset-selected .tda-card-desc,
+[data-appearance="light"] button[id^="model-btn-"].tda-preset-selected .tda-card-desc,
+.theme-light button[id^="preset-btn-"].tda-preset-selected .tda-card-desc,
+.theme-light button[id^="model-btn-"].tda-preset-selected .tda-card-desc {
+  color: #0369a1 !important;
+  font-weight: 600 !important;
+}
+
+[data-appearance="light"] button[id^="preset-btn-"].tda-preset-selected .tda-card-formula,
+[data-appearance="light"] button[id^="model-btn-"].tda-preset-selected .tda-card-formula,
+.theme-light button[id^="preset-btn-"].tda-preset-selected .tda-card-formula,
+.theme-light button[id^="model-btn-"].tda-preset-selected .tda-card-formula {
+  color: #0284c7 !important;
+  font-weight: 700 !important;
+}
+
+[data-appearance="light"] .tda-selected-dot,
+.theme-light .tda-selected-dot {
+  background-color: #0284c7 !important;
+}
+
+/* Share & Header Actions in Light Theme */
+[data-appearance="light"] #btn-open-share,
+.theme-light #btn-open-share {
+  background-color: #e0f2fe !important;
+  border: 1.5px solid #38bdf8 !important;
+  color: #0c4a6e !important;
+}
+
+[data-appearance="light"] #btn-open-share span,
+.theme-light #btn-open-share span {
+  color: #0c4a6e !important;
+  font-weight: 800 !important;
+}
+
+[data-appearance="light"] #btn-open-share svg,
+.theme-light #btn-open-share svg {
+  color: #0284c7 !important;
+}
+
+[data-appearance="light"] #btn-open-share:hover,
+.theme-light #btn-open-share:hover {
+  background-color: #bae6fd !important;
+  border-color: #0284c7 !important;
+}
+
+[data-appearance="light"] #btn-share-session,
+.theme-light #btn-share-session {
+  background-color: #f1f5f9 !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+[data-appearance="light"] #btn-share-session svg,
+.theme-light #btn-share-session svg {
+  color: #0284c7 !important;
+}
+
+[data-appearance="light"] #btn-open-presentation-top,
+.theme-light #btn-open-presentation-top {
+  background-color: #f3e8ff !important;
+  border: 1px solid #d8b4fe !important;
+  color: #581c87 !important;
+}
+
+[data-appearance="light"] #btn-open-presentation-top span,
+.theme-light #btn-open-presentation-top span {
+  color: #581c87 !important;
+  font-weight: 800 !important;
+}
+
+[data-appearance="light"] #btn-open-presentation-top svg,
+.theme-light #btn-open-presentation-top svg {
+  color: #7e22ce !important;
+}
+
+[data-appearance="light"] #btn-cycle-realtime-colors,
+.theme-light #btn-cycle-realtime-colors,
+[data-appearance="light"] #btn-open-settings,
+.theme-light #btn-open-settings {
+  background-color: #f1f5f9 !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+/* Light Theme Active / Inactive Tabs */
+[data-appearance="light"] .tda-tab-active,
+.theme-light .tda-tab-active {
+  background-color: #e0f2fe !important;
+  border: 1.5px solid #0284c7 !important;
+  color: #0c4a6e !important;
+  font-weight: 800 !important;
+}
+
+[data-appearance="light"] .tda-tab-active svg,
+[data-appearance="light"] .tda-tab-active span,
+.theme-light .tda-tab-active svg,
+.theme-light .tda-tab-active span {
+  color: #0c4a6e !important;
+}
+
+[data-appearance="light"] .tda-tab-inactive,
+.theme-light .tda-tab-inactive {
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #334155 !important;
+}
+
+[data-appearance="light"] .tda-tab-inactive svg,
+[data-appearance="light"] .tda-tab-inactive span,
+.theme-light .tda-tab-inactive svg,
+.theme-light .tda-tab-inactive span {
+  color: #334155 !important;
+}
+
+[data-appearance="light"] .tda-tab-inactive:hover,
+.theme-light .tda-tab-inactive:hover {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #94a3b8 !important;
+}
+
+[data-appearance="light"] .tda-tab-inactive:hover svg,
+[data-appearance="light"] .tda-tab-inactive:hover span,
+.theme-light .tda-tab-inactive:hover svg,
+.theme-light .tda-tab-inactive:hover span {
+  color: #0f172a !important;
+}
+
+

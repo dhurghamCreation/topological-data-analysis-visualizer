@@ -1,0 +1,6 @@
+{
+  "name": "Topological Data Analysis (TDA) Visualizer",
+  "description": "Interactive Topological Data Analysis suite for computing persistent homology, Vietoris-Rips filtrations, persistence diagrams, barcodes, Betti curves, and 3D geometric manifold visualization.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

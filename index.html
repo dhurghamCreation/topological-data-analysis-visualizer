@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function() {
+        // Suppress benign Vite HMR websocket reconnection notices in sandboxed cloud preview
+        function isBenign(arg) {
+          if (!arg) return false;
+          var str = '';
+          try {
+            str = typeof arg === 'object' ? (arg.message || arg.stack || JSON.stringify(arg) || '') : String(arg);
+          } catch(e) {
+            str = String(arg);
+          }
+          return (
+            str.indexOf('WebSocket') !== -1 ||
+            str.indexOf('websocket') !== -1 ||
+            str.indexOf('[vite]') !== -1 ||
+            str.indexOf('ws://') !== -1 ||
+            str.indexOf('wss://') !== -1 ||
+            str.indexOf('ResizeObserver') !== -1
+          );
+        }
+
+        var origErr = console.error;
+        console.error = function() {
+          var args = Array.prototype.slice.call(arguments);
+          for (var i = 0; i < args.length; i++) {
+            if (isBenign(args[i])) return;
+          }
+          origErr.apply(console, args);
+        };
+
+        var origWarn = console.warn;
+        console.warn = function() {
+          var args = Array.prototype.slice.call(arguments);
+          for (var i = 0; i < args.length; i++) {
+            if (isBenign(args[i])) return;
+          }
+          origWarn.apply(console, args);
+        };
+
+        var origInfo = console.info;
+        if (origInfo) {
+          console.info = function() {
+            var args = Array.prototype.slice.call(arguments);
+            for (var i = 0; i < args.length; i++) {
+              if (isBenign(args[i])) return;
+            }
+            origInfo.apply(console, args);
+          };
+        }
+
+        window.addEventListener('unhandledrejection', function(evt) {
+          if (evt && isBenign(evt.reason)) {
+            evt.preventDefault();
+            evt.stopImmediatePropagation();
+          }
+        });
+
+        window.addEventListener('error', function(evt) {
+          if (evt && (isBenign(evt.message) || isBenign(evt.error))) {
+            evt.preventDefault();
+            evt.stopImmediatePropagation();
+          }
+        });
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Topological Data Analysis (TDA) Visualizer</title>
+    <meta name="description" content="Interactive Topological Data Analysis suite for computing persistent homology, Vietoris-Rips filtrations, persistence diagrams, barcodes, Betti curves, and 3D geometric manifold visualization." />
+    <meta property="og:title" content="Topological Data Analysis (TDA) Visualizer" />
+    <meta property="og:description" content="Interactive Topological Data Analysis suite for computing persistent homology, Vietoris-Rips filtrations, persistence diagrams, barcodes, Betti curves, and 3D geometric manifold visualization." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+    <style>
+      /* Custom Topological Crosshair & Scientific Cursor */
+      body {
+        cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2338bdf8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='8'%3E%3C/circle%3E%3Cline x1='12' y1='2' x2='12' y2='6'%3E%3Cline x1='12' y1='18' x2='12' y2='22'%3E%3C/line%3E%3Cline x1='2' y1='12' x2='6' y2='12'%3E%3C/line%3E%3Cline x1='18' y1='12' x2='22' y2='12'%3E%3C/line%3E%3C/svg%3E") 12 12, auto;
+      }
+      button, a, input, select, textarea, [role="button"] {
+        cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2322d3ee' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'%3E%3C/circle%3E%3C/svg%3E") 12 12, pointer !important;
+      }
+    </style>
+  </head>
+  <body class="radix-themes antialiased selection:bg-indigo-500/30 selection:text-indigo-200 overflow-x-hidden">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
