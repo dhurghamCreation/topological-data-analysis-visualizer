@@ -504,18 +504,9 @@ export default function App() {
             ∂
           </div>
           <div>
-            <div className="flex items-center gap-2">
-              <h1 className={`text-sm sm:text-base font-display font-extrabold tracking-tight ${isLightTheme ? 'text-black' : 'text-white'}`}>
-                Topological Data Analysis
-              </h1>
-              <span className={`text-[10px] sm:text-[11px] uppercase font-mono font-bold px-2 py-0.5 rounded-md border shadow-xs ${
-                isLightTheme
-                  ? 'bg-slate-100 text-black border-slate-300'
-                  : 'bg-cyan-950/70 text-cyan-300 border-cyan-700/60'
-              }`}>
-                {config.filtrationModel === 'alpha_complex' ? 'Alpha(X, α)' : 'VR(X, ε)'}
-              </span>
-            </div>
+            <h1 className={`text-sm sm:text-base font-display font-extrabold tracking-tight ${isLightTheme ? 'text-black' : 'text-white'}`}>
+              Topological Data Analysis
+            </h1>
             <div className={`text-[11px] font-sans flex items-center gap-1.5 font-medium ${isLightTheme ? 'text-black font-semibold' : 'text-zinc-400'}`}>
               
               <span className={isLightTheme ? 'text-black font-bold' : 'text-zinc-600'}>•</span>
